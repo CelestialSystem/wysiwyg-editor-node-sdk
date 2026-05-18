@@ -75,6 +75,9 @@ jobs:
         run: |
           jq --arg VERSION "$VERSION" '.version = $VERSION' bower.json > tmp.json
           mv tmp.json bower.json
+          
+          jq ".dependencies[\"froala-wysiwyg-editor\"] = \"^$VERSION\"" bower.json > tmp.json
+          mv tmp.json bower.json
 
       - name: Commit changes
         run: |
